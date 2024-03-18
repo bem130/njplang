@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>NJPlang</title>
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+
+var wasm;
+async function main() {
+    const module = await import("./pkg/njplang.js");
+    await module.default();
+    module._start?module._start():module.main?module.main():(()=>{throw `Entry point not Found: _start() or main()`})();
+    wasm = module;
+}
+main();
+
+
+</script>
