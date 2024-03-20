@@ -13,7 +13,7 @@ var wasm;
 async function main() {
     const module = await import("./pkg/njplang.js");
     await module.default();
-    module._start?module._start():module.main?module.main():(()=>{throw `Entry point not Found: _start() or main()`})();
+    module._start?module._start():module.main?module.main():(()=>{console.error(`Entry point not Found: _start() or main()`)})();
     wasm = module;
 }
 main();
