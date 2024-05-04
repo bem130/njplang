@@ -1,7 +1,8 @@
 # NJPlang
+日本語のようなプログラミング言語を作るプロジェクト  
 
-
-## build
+## 実行
+https://github.com/yhirose/cpp-peglib の peglib.h を設置してください
 ```bash
-wasm-pack build --target web
+sh ./test.sh
 ```

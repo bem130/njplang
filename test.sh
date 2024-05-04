@@ -1,0 +1,1 @@
+make main.o && cat test.txt | ./main.o grammar.peg

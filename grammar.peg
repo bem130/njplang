@@ -1,0 +1,2 @@
+Additive    <- Number 'と' Number 'の' '和'
+Number      <- < [0-9]+ >
