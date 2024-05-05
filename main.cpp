@@ -1,5 +1,5 @@
 // (1) Include the header file
-#include "peglib.h"
+#include "cpp-peglib/peglib.h"
 #include <fstream>
 #include <iostream>
 
@@ -21,18 +21,29 @@ template <typename T> void my_ast_to_s_core(const std::shared_ptr<T> &ptr, std::
     // }
     if (ast.name != ast.original_name) { name += "[" + ast.name + "]"; }
     if (ast.is_token) { // トークン
-        s += "\x1b[36m"+name+"\x1b[0m: ";
+        s += "\x1b[0m"+name+"\x1b[0m: ";
+        s += "\x1b[36m";
         s += ast.token;
+        s += "\x1b[0m";
     } else { // 構造
-        //my_ast_indent(s,level);
-        s += "\x1b[31m"+name+"\x1b[0m" + " {\n";
-        for (auto node : ast.nodes) {
-            my_ast_indent(s,level+1);
-            my_ast_to_s_core(node, s, level + 1);
-            s += ",\n";
+        if (name=="文"||name=="値") {
+            s += "\x1b[33m{\x1b[0m";
         }
-        my_ast_indent(s,level);
-        s += "}";
+        else {
+            s += "{";
+        }
+        for (auto node : ast.nodes) {
+            //my_ast_indent(s,level+1);
+            my_ast_to_s_core(node, s, level + 1);
+            s += ",";
+        }
+        // my_ast_indent(s,level);
+        if (name=="文"||name=="値") {
+            s += "\x1b[33m}\x1b[0m:\x1b[31m"+name+"\x1b[0m";
+        }
+        else {
+            s += "}:\x1b[32m"+name+"\x1b[0m";
+        }
     }
 }
 

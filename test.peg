@@ -1,0 +1,6 @@
+expr <- atom expr2
+expr2 <- "++" atom expr2 / ""
+atom <- "a"
+
+式 <- 和 / "10"
+和 <- 式 "と" 式 "の" "和"
