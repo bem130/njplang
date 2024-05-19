@@ -1,4 +1,3 @@
-// (1) Include the header file
 #include "cpp-peglib/peglib.h"
 #include <fstream>
 #include <iostream>
